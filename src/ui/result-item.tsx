@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { viewPanelDataRequest } from 'src/redux/actions';
+import { TSearchBy } from 'src/types';
 
 interface IRowTable {
   setShowPanel?: (value: boolean) => void;
@@ -7,7 +9,13 @@ interface IRowTable {
 }
 
 export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
-  const openQuickViewPanel = () => setShowPanel && setShowPanel(true);
+  const openQuickViewPanel = (type: TSearchBy, value: string) => {
+    if (setShowPanel && type) {
+      viewPanelDataRequest(type, value);
+
+      setShowPanel(true);
+    }
+  };
 
   const { owner } = searchData;
 
@@ -30,7 +38,10 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
         <span>{searchData.answer_count}</span>
         <span> answers </span>
       </Link>
-      <div className="search-result_item__author" onClick={openQuickViewPanel}>
+      <div
+        className="search-result_item__author"
+        onClick={() => openQuickViewPanel('tag', 'react')}
+      >
         <img
           className="search-result_item__author_avatar"
           src={owner.profile_image}

@@ -4,6 +4,7 @@ import { useQuery } from 'src/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 import { resultRequest } from 'src/redux/actions';
+import { QuickViewPanel } from 'src/ui/quick-view-panel';
 
 export const SearchResultPage = () => {
   const query = useQuery();
@@ -27,6 +28,7 @@ export const SearchResultPage = () => {
     <div className="wrapper">
       <div className="search-result">
         <ResultList searchResult={searchResult} setShowPanel={setShowPanel} />
+        {showPanel && <QuickViewPanel />}
       </div>
     </div>
   );

@@ -9,9 +9,17 @@ export const getQuestionsBySearchQuery = async (searchValue: string) => {
 };
 
 export const getQuestionsByTag = async (tag: string) => {
-  const urlSearch = `${URL_API}search?order=desc&sort=activity&tagged=${tag}&site=stackoverflow`;
+  const urlSearchByTag = `${URL_API}search?order=desc&sort=activity&tagged=${tag}&site=stackoverflow`;
 
-  const res = await fetch(urlSearch);
+  const res = await fetch(urlSearchByTag);
+  const data = await res.json();
+  return data;
+};
+
+export const getQuestionsByUser = async (userId: string) => {
+  const urlSearchByUser = `${URL_API}users/${userId}/questions?order=desc&sort=votes&site=stackoverflow`;
+
+  const res = await fetch(urlSearchByUser);
   const data = await res.json();
   return data;
 };

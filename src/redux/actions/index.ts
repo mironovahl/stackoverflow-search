@@ -3,6 +3,8 @@ import {
   QUESTION_INFO_REQUEST,
   SEARCH_REQUEST,
   SEARCH_RESULT_LOADED,
+  QUICK_VIEW_PANEL_DATA_LOADED,
+  QUICK_VIEW_PANEL_DATA_REQUEST,
 } from '../types';
 
 export const resultLoaded = (searchResult: any) => ({
@@ -27,5 +29,22 @@ export const questionLoaded = (questionInfo: any) => ({
   payload: questionInfo,
 });
 
+export const viewPanelDataRequest = (
+  searchByType: string,
+  searchByValue: string,
+) =>
+  ({
+    type: QUICK_VIEW_PANEL_DATA_REQUEST,
+    payload: { searchByType, searchByValue },
+  } as const);
+
+export const viewPanelDataLoaded = (viewPanelData: any) => ({
+  type: QUICK_VIEW_PANEL_DATA_LOADED,
+  payload: viewPanelData,
+});
+
 export type ResultRequestAction = ReturnType<typeof resultRequest>;
 export type QuestionRequestAction = ReturnType<typeof questionRequest>;
+export type ViewPanelDataRequestAction = ReturnType<
+  typeof viewPanelDataRequest
+>;
