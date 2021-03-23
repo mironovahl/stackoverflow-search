@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { resultLoad } from 'src/redux/actions';
+import { resultRequest } from 'src/redux/actions';
 
 export const SearchPage = () => {
   const [value, setValue] = useState('');
@@ -12,7 +12,7 @@ export const SearchPage = () => {
   };
 
   const handleClick = () => {
-    dispatch(resultLoad(value));
+    dispatch(resultRequest(value));
   };
 
   return (

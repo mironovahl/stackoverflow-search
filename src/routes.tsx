@@ -1,16 +1,18 @@
 import React, { ReactElement } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { SearchPage } from 'src/pages/search';
 import { SearchResultPage } from 'src/pages/search-result';
+import { QuestionPage } from './pages/question';
 
 const Routes = (): ReactElement => (
-  <HashRouter>
+  <BrowserRouter>
     <Switch>
       <Route path="/" component={SearchPage} exact />
       <Route path="/search" component={SearchResultPage} />
+      <Route path="/question/:id" component={QuestionPage} />
     </Switch>
-  </HashRouter>
+  </BrowserRouter>
 );
 
 export default Routes;
