@@ -1,0 +1,2 @@
+export const SEARCH_RESULT_LOADED = 'SEARCH_RESULT_LOADED';
+export const SEARCH_REQUEST = 'SEARCH_REQUEST' as const;
