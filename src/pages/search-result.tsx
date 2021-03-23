@@ -3,8 +3,18 @@ import { ResultList } from 'src/ui/result-list';
 import { useQuery } from 'src/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
+import { resultRequest } from 'src/redux/actions';
 
 export const SearchResultPage = () => {
+  const query = useQuery();
+  const searchQuery = query.get('q') as '';
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(resultRequest(searchQuery));
+  }, [searchQuery]);
+
   const searchResult = useSelector((state: TReducer) => state.searchResult);
   const loading = useSelector((state: TReducer) => state.resultLoading);
 
@@ -13,7 +23,6 @@ export const SearchResultPage = () => {
   if (loading) {
     return <p> Loading...</p>;
   }
-  console.log(loading);
   return (
     <div className="wrapper">
       <div className="search-result">

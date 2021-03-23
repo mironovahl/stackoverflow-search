@@ -22,6 +22,8 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
         {searchData.title}
       </Link>
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         className="search-result_item__answers"
         to={`/question/${searchData.question_id}`}
       >

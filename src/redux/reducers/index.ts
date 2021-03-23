@@ -9,11 +9,11 @@ import {
 const initialState: TReducer = {
   searchResult: {},
   searchValue: '',
-  resultLoading: false,
+  resultLoading: true,
 
   questionInfo: {},
   guestionId: '',
-  questionLoading: false,
+  questionLoading: true,
 };
 
 const reducer = (state = initialState, action: any) => {

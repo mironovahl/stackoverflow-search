@@ -18,10 +18,17 @@ export const QuestionPage = () => {
     dispatch(questionRequest(id));
   }, [id]);
 
+  const loading = useSelector((state: TReducer) => state.questionLoading);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className="wrapper">
-      <Question />
-      <Answers />
+      <div className="question">
+        <Question />
+        <Answers />
+      </div>
     </div>
   );
 };

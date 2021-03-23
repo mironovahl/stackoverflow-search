@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { resultRequest } from 'src/redux/actions';
+import { useHistory } from 'react-router-dom';
 
 export const SearchPage = () => {
+  const history = useHistory();
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
 
   const handleChange = (event: any) => {
     setValue(event.target.value);
   };
 
   const handleClick = () => {
-    dispatch(resultRequest(value));
+    history.push({ pathname: '/search', search: `q=${value}` });
   };
 
   return (
@@ -25,15 +23,13 @@ export const SearchPage = () => {
         onChange={handleChange}
       />
 
-      <Link to={`/search?q=${value}`}>
-        <button
-          className="search_form__button"
-          type="submit"
-          onClick={handleClick}
-        >
-          Search
-        </button>
-      </Link>
+      <button
+        className="search_form__button"
+        type="submit"
+        onClick={handleClick}
+      >
+        Search
+      </button>
     </form>
   );
 };
