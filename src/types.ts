@@ -1,10 +1,12 @@
 export type TSearchBy = 'tag' | 'author' | null;
+export type TSortBy = 'question' | 'tag' | 'answer' | 'author' | 'score' | null;
 
 export type TSearch = {
   searchResult: any;
   searchValue: string;
   loading: boolean;
   searchError: null;
+  sortBy: TSortBy;
 };
 
 export type TQuestion = {

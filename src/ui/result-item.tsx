@@ -39,7 +39,7 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
       </Link>
       <div
         className="search-result_item__author"
-        onClick={() => openQuickViewPanel('tag', 'react')}
+        onClick={() => openQuickViewPanel('author', '10963451')}
       >
         <img
           className="search-result_item__author_avatar"

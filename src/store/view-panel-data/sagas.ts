@@ -1,4 +1,4 @@
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, call, takeLatest, takeEvery } from 'redux-saga/effects';
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
 import { TSearchBy } from 'src/types';
 import { ViewPanelDataRequestAction } from './actions';
@@ -16,7 +16,7 @@ export const fetchViewPanelData = async (
     data = await getQuestionsByTag(searchByValue);
   }
 
-  if (searchByType === 'tag') {
+  if (searchByType === 'author') {
     data = await getQuestionsByUser(searchByValue);
   }
 
@@ -33,7 +33,7 @@ function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
 }
 
 export function* watchViewPanelData() {
-  yield takeLatest<ViewPanelDataRequestAction>(
+  yield takeEvery<ViewPanelDataRequestAction>(
     QUICK_VIEW_PANEL_DATA_REQUEST,
     sagaGetViewPanelData,
   );

@@ -2,10 +2,14 @@
 
 @import './abstract/variables';
 
-@import './components/result-list';
+@import './components/button';
 @import './components/answers';
+@import './components/result-item.scss';
 
 @import './layout/forms';
+@import './layout/result-list';
+@import './layout/sorting';
 
 @import './page/search-result';
-@import './page/question'
+@import './page/question';
+@import './page/search';

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 import { QuickViewPanel } from 'src/ui/quick-view-panel';
 import { searchRequest } from 'src/store/search';
+import { SortButtons } from './sort-buttons';
 
 export const SearchResultPage = () => {
   const query = useQuery();
@@ -34,8 +35,10 @@ export const SearchResultPage = () => {
   }
 
   return (
-    <div className="wrapper">
-      <div className="search-result">
+    <div className="search-result">
+      <div className="wrapper">
+        <p>Search result for "{searchQuery}"</p>
+        <SortButtons />
         <ResultList searchResult={searchResult} setShowPanel={setShowPanel} />
         {showPanel && <QuickViewPanel />}
       </div>

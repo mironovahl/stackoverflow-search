@@ -24,8 +24,8 @@ export const QuestionPage = () => {
   }
 
   return (
-    <div className="wrapper">
-      <div className="question">
+    <div className="question">
+      <div className="wrapper">
         <Question />
         <Answers />
       </div>

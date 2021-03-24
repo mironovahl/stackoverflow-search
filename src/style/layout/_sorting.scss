@@ -1,0 +1,17 @@
+.sorting {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  align-items: center;
+}
+
+.sorting_title {
+  margin-right: 12px;
+  white-space: nowrap;
+}
+
+.sorting_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
