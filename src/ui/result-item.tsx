@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { viewPanelDataRequest } from 'src/redux/actions';
+import { viewPanelDataRequest } from 'src/store/view-panel-data';
 import { TSearchBy } from 'src/types';
 
 interface IRowTable {
@@ -12,7 +12,6 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
   const openQuickViewPanel = (type: TSearchBy, value: string) => {
     if (setShowPanel && type) {
       viewPanelDataRequest(type, value);
-
       setShowPanel(true);
     }
   };

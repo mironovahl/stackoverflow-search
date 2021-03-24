@@ -3,8 +3,8 @@ import { ResultList } from 'src/ui/result-list';
 import { useQuery } from 'src/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
-import { resultRequest } from 'src/redux/actions';
 import { QuickViewPanel } from 'src/ui/quick-view-panel';
+import { searchRequest } from 'src/store/search';
 
 export const SearchResultPage = () => {
   const query = useQuery();
@@ -13,13 +13,15 @@ export const SearchResultPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(resultRequest(searchQuery));
+    dispatch(searchRequest(searchQuery));
   }, [searchQuery]);
 
-  const searchResult = useSelector((state: TReducer) => state.searchResult);
-  const loading = useSelector((state: TReducer) => state.resultLoading);
-  const error = useSelector((state: TReducer) => state.searchError);
-  console.log(error);
+  const searchResult = useSelector(
+    (state: TReducer) => state.search.searchResult,
+  );
+  console.log(searchResult);
+  const loading = useSelector((state: TReducer) => state.search.loading);
+  const error = useSelector((state: TReducer) => state.search.searchError);
 
   const [showPanel, setShowPanel] = useState(false);
 

@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 
 export const Question = () => {
-  const questionInfo = useSelector((state: TReducer) => state.questionInfo);
+  const questionInfo = useSelector(
+    (state: TReducer) => state.question.questionInfo,
+  );
 
   return (
     <div className="question_info">

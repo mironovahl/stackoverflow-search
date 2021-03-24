@@ -1,19 +1,31 @@
 export type TSearchBy = 'tag' | 'author' | null;
 
-export type TReducer = {
+export type TSearch = {
   searchResult: any;
   searchValue: string;
-  resultLoading: boolean;
+  loading: boolean;
   searchError: null;
+};
 
+export type TQuestion = {
   questionInfo: any;
   guestionId: string;
-  questionLoading: boolean;
+  loading: boolean;
   questionError: null;
+};
 
+export type TViewPanelData = {
   viewPanelData: any;
   searchByType: TSearchBy;
   searchByValue: string;
-  viewPanelDataLoading: boolean;
-  dError: null;
+  loading: boolean;
+  error: null;
+};
+
+export type TReducer = {
+  search: TSearch;
+
+  question: TQuestion;
+
+  viewPanelData: TViewPanelData;
 };

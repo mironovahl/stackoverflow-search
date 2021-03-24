@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import logo from './logo.svg';
 import Routes from './routes';
-import store from './redux/store';
+import store from './store/store';
 
 function App() {
   return (

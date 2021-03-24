@@ -4,9 +4,11 @@ import { TReducer } from 'src/types';
 import { ResultList } from './result-list';
 
 export const QuickViewPanel = () => {
-  const loading = useSelector((state: TReducer) => state.viewPanelDataLoading);
+  const loading = useSelector((state: TReducer) => state.viewPanelData.loading);
 
-  const viewPanelData = useSelector((state: TReducer) => state.viewPanelData);
+  const viewPanelData = useSelector(
+    (state: TReducer) => state.viewPanelData.viewPanelData,
+  );
   if (loading) {
     return <p> Loading...</p>;
   }
