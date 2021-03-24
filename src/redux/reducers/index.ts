@@ -6,21 +6,29 @@ import {
   QUESTION_INFO_REQUEST,
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
+  DATA_ERROR,
+  QUESTION_ERROR,
+  SEARCH_ERROR,
 } from '../types';
+
+import { Action } from '../actions';
 
 const initialState: TReducer = {
   searchResult: {},
   searchValue: '',
   resultLoading: true,
+  searchError: null,
 
   questionInfo: {},
   guestionId: '',
   questionLoading: true,
+  questionError: null,
 
   viewPanelData: {},
   searchByType: null,
   searchByValue: '',
   viewPanelDataLoading: true,
+  dError: null,
 };
 
 const reducer = (state = initialState, action: any) => {
@@ -29,6 +37,7 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         resultLoading: true,
+        searchError: null,
       };
     }
 
@@ -36,6 +45,14 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         searchResult: action.payload,
+        resultLoading: false,
+      };
+    }
+
+    case SEARCH_ERROR: {
+      return {
+        ...state,
+        searchError: action.payload,
         resultLoading: false,
       };
     }
@@ -51,6 +68,14 @@ const reducer = (state = initialState, action: any) => {
       return {
         ...state,
         questionInfo: action.payload,
+        questionLoading: false,
+      };
+    }
+
+    case QUESTION_ERROR: {
+      return {
+        ...state,
+        questionError: action.payload,
         questionLoading: false,
       };
     }

@@ -16,14 +16,10 @@ import {
   SEARCH_RESULT_LOADED,
   QUESTION_INFO_REQUEST,
   QUESTION_INFO_LOADED,
+  SEARCH_ERROR,
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
 } from './types';
-
-type T = {
-  searchByType: TSearchBy;
-  searchByValue: string;
-};
 
 export const fetchSearchResult = async (searchQuery: string) => {
   const data = await getQuestionsBySearchQuery(searchQuery);
@@ -52,8 +48,15 @@ export const fetchViewPanelData = async (
 };
 
 function* sagaSearch(action: ResultRequestAction) {
-  const payload: { data: any } = yield call(fetchSearchResult, action.payload);
-  yield put({ type: SEARCH_RESULT_LOADED, payload });
+  try {
+    const payload: { data: any } = yield call(
+      fetchSearchResult,
+      action.payload,
+    );
+    yield put({ type: SEARCH_RESULT_LOADED, payload });
+  } catch (e) {
+    yield put({ type: SEARCH_ERROR, e });
+  }
 }
 
 function* sagaGetQuestionInfo(action: QuestionRequestAction) {
@@ -62,8 +65,12 @@ function* sagaGetQuestionInfo(action: QuestionRequestAction) {
 }
 
 function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
-  // const payload: { data: any } = yield call(fetchViewPanelData, action.payload);
-  // yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload });
+  const payload: { data: any } = yield call(
+    fetchViewPanelData,
+    action.payload.searchByType,
+    action.payload.searchByValue,
+  );
+  yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload });
 }
 
 export function* sagaWatcher() {

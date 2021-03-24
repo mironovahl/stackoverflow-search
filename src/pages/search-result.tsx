@@ -18,12 +18,19 @@ export const SearchResultPage = () => {
 
   const searchResult = useSelector((state: TReducer) => state.searchResult);
   const loading = useSelector((state: TReducer) => state.resultLoading);
+  const error = useSelector((state: TReducer) => state.searchError);
+  console.log(error);
 
   const [showPanel, setShowPanel] = useState(false);
 
   if (loading) {
     return <p> Loading...</p>;
   }
+
+  if (error) {
+    return <p>Something went wrong...</p>;
+  }
+
   return (
     <div className="wrapper">
       <div className="search-result">

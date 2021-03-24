@@ -1,3 +1,4 @@
+import { TSearchBy } from 'src/types';
 import {
   QUESTION_INFO_LOADED,
   QUESTION_INFO_REQUEST,
@@ -5,6 +6,7 @@ import {
   SEARCH_RESULT_LOADED,
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
+  SEARCH_ERROR,
 } from '../types';
 
 export const resultLoaded = (searchResult: any) => ({
@@ -18,6 +20,11 @@ export const resultRequest = (searchValue: string) =>
     payload: searchValue,
   } as const);
 
+export const resultFailed = (error: any) => ({
+  type: SEARCH_ERROR,
+  payload: error,
+});
+
 export const questionRequest = (questionId: string) =>
   ({
     type: QUESTION_INFO_REQUEST,
@@ -30,7 +37,7 @@ export const questionLoaded = (questionInfo: any) => ({
 });
 
 export const viewPanelDataRequest = (
-  searchByType: string,
+  searchByType: TSearchBy,
   searchByValue: string,
 ) =>
   ({
@@ -38,13 +45,19 @@ export const viewPanelDataRequest = (
     payload: { searchByType, searchByValue },
   } as const);
 
-export const viewPanelDataLoaded = (viewPanelData: any) => ({
-  type: QUICK_VIEW_PANEL_DATA_LOADED,
-  payload: viewPanelData,
-});
+export const viewPanelDataLoaded = (viewPanelData: any) =>
+  ({
+    type: QUICK_VIEW_PANEL_DATA_LOADED,
+    payload: viewPanelData,
+  } as const);
 
 export type ResultRequestAction = ReturnType<typeof resultRequest>;
 export type QuestionRequestAction = ReturnType<typeof questionRequest>;
 export type ViewPanelDataRequestAction = ReturnType<
   typeof viewPanelDataRequest
 >;
+
+export type Action =
+  | ResultRequestAction
+  | QuestionRequestAction
+  | ViewPanelDataRequestAction;
