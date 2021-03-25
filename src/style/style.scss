@@ -1,6 +1,6 @@
-@import './base/base';
-
 @import './abstract/variables';
+
+@import './base/base';
 
 @import './components/button';
 @import './components/answers';
@@ -14,3 +14,4 @@
 @import './page/search-result';
 @import './page/question';
 @import './page/search';
+@import './page/not-found'

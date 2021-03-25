@@ -1,10 +1,10 @@
-import { TQuestion } from 'src/types';
+import { TQuestion, TQuestionInfo } from 'src/types';
 
 import { QUESTION_INFO_LOADED, QUESTION_INFO_REQUEST } from './types';
 import { QuestionAction } from './actions';
 
 const initialState: TQuestion = {
-  questionInfo: {},
+  questionInfo: {} as TQuestionInfo,
   guestionId: '',
   loading: true,
   questionError: null,

@@ -29,7 +29,7 @@ export const SearchPage = () => {
           />
 
           <button
-            className="search_form__button"
+            className="btn search_form__button"
             type="submit"
             onClick={handleClick}
           >
