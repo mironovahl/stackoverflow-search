@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { ResultList } from 'src/ui/result-list';
 import { useQuery } from 'src/utils';
 import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 import { QuickViewPanel } from 'src/ui/quick-view-panel';
 import { searchRequest } from 'src/store/search';
 import { Spinner } from 'src/ui/spinner';
-import { SortButtons } from './sort-buttons';
+import { ResultContent } from 'src/ui/result-content';
 
 export const SearchResultPage = () => {
   const query = useQuery();
@@ -37,10 +36,14 @@ export const SearchResultPage = () => {
   return (
     <div className="search-result">
       <div className="wrapper">
-        <p>Search result for "{searchQuery}"</p>
-        <SortButtons />
-        <ResultList searchResult={searchResult} setShowPanel={setShowPanel} />
-        {showPanel && <QuickViewPanel />}
+        <p className="result_title">Search result for "{searchQuery}"</p>
+        <div className="result_content">
+          <ResultContent
+            searchResult={searchResult}
+            setShowPanel={setShowPanel}
+          />
+          {showPanel && <QuickViewPanel />}
+        </div>
       </div>
     </div>
   );

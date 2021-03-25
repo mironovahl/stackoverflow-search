@@ -45,7 +45,7 @@
 .search-result_item__author {
   max-width: 200px;
   width: 30%;
-  height: 40px;
+  min-height: 40px;
   display: flex;
   &_avatar {
     width: 40px;

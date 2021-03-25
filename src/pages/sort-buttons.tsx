@@ -1,26 +1,43 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { searchSorting } from 'src/store/search';
+import { TSortBy } from 'src/types';
 
 export const SortButtons = () => {
   const dispatch = useDispatch();
-  const handleClick = () => {
-    dispatch(searchSorting('owner'));
+  const handleClick = (value: TSortBy) => {
+    dispatch(searchSorting(value));
   };
   return (
     <div className="sorting">
       <p className="sorting_title">Sort by</p>
       <div className="sorting_buttons">
-        <button onClick={handleClick} className="btn" type="button">
+        <button
+          onClick={() => handleClick('title')}
+          className="btn"
+          type="button"
+        >
           Title
         </button>
-        <button className="btn" type="button">
+        <button
+          className="btn"
+          type="button"
+          onClick={() => handleClick('owner')}
+        >
           Author
         </button>
-        <button className="btn" type="button">
+        <button
+          className="btn"
+          type="button"
+          onClick={() => handleClick('answer_count')}
+        >
           Answers
         </button>
-        <button className="btn" type="button">
+        <button
+          className="btn"
+          type="button"
+          onClick={() => handleClick('tags')}
+        >
           Tag
         </button>
       </div>

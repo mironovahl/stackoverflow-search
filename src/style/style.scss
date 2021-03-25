@@ -4,13 +4,14 @@
 
 @import './components/button';
 @import './components/answers';
-@import './components/result-item.scss';
+@import './components/result-item';
 @import './components/spinner';
 @import './components/tags';
 
 @import './layout/forms';
 @import './layout/result-list';
 @import './layout/sorting';
+@import './layout/result-content';
 
 @import './page/search-result';
 @import './page/question';
