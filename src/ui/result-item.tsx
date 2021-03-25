@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
-import { TSearchBy, TSearchItem, TSearchResponse } from 'src/types';
+import { TSearchBy, TSearchItem } from 'src/types';
+import { Tags } from './tags';
 
 interface IRowTable {
   setShowPanel?: (value: boolean) => void;
@@ -19,8 +20,6 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
   };
 
   const { owner } = searchData;
-
-  const renderTags = (tags: string[]) => tags.map(tag => <span>{tag}</span>);
 
   return (
     <div className="search-result_item">
@@ -54,7 +53,7 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
           {searchData.owner.display_name}
         </p>
       </div>
-      <p className="search-result_item__tags">{renderTags(searchData.tags)}</p>
+      <Tags handleClick={openQuickViewPanel} tags={searchData.tags} />
     </div>
   );
 };

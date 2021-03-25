@@ -13,6 +13,7 @@ export const QuickViewPanel = () => {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div className="view-panel">
       <ResultList searchResult={viewPanelData} />
