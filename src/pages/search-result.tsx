@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 import { QuickViewPanel } from 'src/ui/quick-view-panel';
 import { searchRequest } from 'src/store/search';
+import { Spinner } from 'src/ui/spinner';
 import { SortButtons } from './sort-buttons';
 
 export const SearchResultPage = () => {
@@ -27,7 +28,7 @@ export const SearchResultPage = () => {
   const [showPanel, setShowPanel] = useState(false);
 
   if (loading) {
-    return <p> Loading...</p>;
+    return <Spinner />;
   }
 
   if (error) {

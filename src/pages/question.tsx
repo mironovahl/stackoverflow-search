@@ -5,6 +5,7 @@ import { questionRequest } from 'src/store/question';
 import { TReducer } from 'src/types';
 import { Answers } from 'src/ui/answers';
 import { Question } from 'src/ui/question';
+import { Spinner } from 'src/ui/spinner';
 
 interface IParams {
   id: string;
@@ -20,7 +21,7 @@ export const QuestionPage = () => {
 
   const loading = useSelector((state: TReducer) => state.question.loading);
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   return (

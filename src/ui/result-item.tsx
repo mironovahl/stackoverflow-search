@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
 import { TSearchBy } from 'src/types';
@@ -9,9 +10,10 @@ interface IRowTable {
 }
 
 export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
+  const dispatch = useDispatch();
   const openQuickViewPanel = (type: TSearchBy, value: string) => {
     if (setShowPanel && type) {
-      viewPanelDataRequest(type, value);
+      dispatch(viewPanelDataRequest(type, value));
       setShowPanel(true);
     }
   };
@@ -23,6 +25,8 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
   return (
     <div className="search-result_item">
       <Link
+        target="_blank"
+        rel="noopener noreferrer"
         className="search-result_item__theme"
         to={`/question/${searchData.question_id}`}
       >
