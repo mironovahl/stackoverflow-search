@@ -5,11 +5,12 @@ import {
   SEARCH_RESULT_LOADED,
   SEARCH_RESULT_SORTING,
   SEARCH_ERROR,
+  SEARCH_RESULT_SORTED,
 } from './types';
 import { SearchAction } from './actions';
 
 const initialState: TSearch = {
-  searchResult: {},
+  searchResult: [],
   searchValue: '',
   loading: true,
   searchError: null,
@@ -38,6 +39,13 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
       return {
         ...state,
         sortBy: action.payload,
+        loading: false,
+      };
+    }
+    case SEARCH_RESULT_SORTED: {
+      return {
+        ...state,
+        searchResult: action.payload,
         loading: false,
       };
     }

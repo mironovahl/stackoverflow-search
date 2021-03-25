@@ -1,8 +1,11 @@
-import { TSortBy } from 'src/types';
+import { TSearchItem, TSortBy } from 'src/types';
 
-export const sort = (param: TSortBy) => (a: any, b: any) => {
+export const sort = (param: TSortBy) => (
+  a: TSearchItem,
+  b: TSearchItem,
+): number => {
   if (param === null) {
-    return;
+    return 0;
   }
   if (a[param] > b[param]) {
     return 1;

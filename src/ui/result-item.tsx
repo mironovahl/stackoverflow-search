@@ -2,16 +2,16 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
-import { TSearchBy } from 'src/types';
+import { TSearchBy, TSearchItem, TSearchResponse } from 'src/types';
 
 interface IRowTable {
   setShowPanel?: (value: boolean) => void;
-  searchData: any;
+  searchData: TSearchItem;
 }
 
 export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
   const dispatch = useDispatch();
-  const openQuickViewPanel = (type: TSearchBy, value: string) => {
+  const openQuickViewPanel = (type: TSearchBy, value: number | string) => {
     if (setShowPanel && type) {
       dispatch(viewPanelDataRequest(type, value));
       setShowPanel(true);
@@ -43,7 +43,7 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
       </Link>
       <div
         className="search-result_item__author"
-        onClick={() => openQuickViewPanel('author', '10963451')}
+        onClick={() => openQuickViewPanel('author', owner.user_id)}
       >
         <img
           className="search-result_item__author_avatar"

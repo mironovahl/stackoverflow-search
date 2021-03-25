@@ -7,7 +7,7 @@ import {
 import { ViewPanelDataAction } from './actions';
 
 const initialState: TViewPanelData = {
-  viewPanelData: {},
+  viewPanelData: [],
   searchByType: null,
   searchByValue: '',
   loading: true,

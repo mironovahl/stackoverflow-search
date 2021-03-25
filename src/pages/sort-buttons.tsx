@@ -5,7 +5,7 @@ import { searchSorting } from 'src/store/search';
 export const SortButtons = () => {
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(searchSorting('question'));
+    dispatch(searchSorting('owner'));
   };
   return (
     <div className="sorting">

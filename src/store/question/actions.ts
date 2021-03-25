@@ -1,3 +1,4 @@
+import { TQuestionInfo } from 'src/types';
 import { QUESTION_INFO_LOADED, QUESTION_INFO_REQUEST } from './types';
 
 export const questionRequest = (questionId: string) =>
@@ -6,7 +7,7 @@ export const questionRequest = (questionId: string) =>
     payload: questionId,
   } as const);
 
-export const questionLoaded = (questionInfo: any) =>
+export const questionLoaded = (questionInfo: TQuestionInfo) =>
   ({
     type: QUESTION_INFO_LOADED,
     payload: questionInfo,

@@ -1,12 +1,13 @@
-import { TSortBy } from 'src/types';
+import { TSearchItem, TSortBy } from 'src/types';
 import {
   SEARCH_REQUEST,
   SEARCH_RESULT_LOADED,
   SEARCH_RESULT_SORTING,
   SEARCH_ERROR,
+  SEARCH_RESULT_SORTED,
 } from './types';
 
-export const searchLoaded = (searchResult: any) =>
+export const searchLoaded = (searchResult: TSearchItem[]) =>
   ({
     type: SEARCH_RESULT_LOADED,
     payload: searchResult,
@@ -24,6 +25,12 @@ export const searchSorting = (sortBy: TSortBy) =>
     payload: sortBy,
   } as const);
 
+export const searchSorted = (resultSorting: TSearchItem[]) =>
+  ({
+    type: SEARCH_RESULT_SORTED,
+    payload: resultSorting,
+  } as const);
+
 export const searchFailed = (error: any) =>
   ({
     type: SEARCH_ERROR,
@@ -33,10 +40,12 @@ export const searchFailed = (error: any) =>
 export type SearchRequestAction = ReturnType<typeof searchRequest>;
 export type SearchLoadedAction = ReturnType<typeof searchLoaded>;
 export type SearchSortingAction = ReturnType<typeof searchSorting>;
+export type SearchSortedAction = ReturnType<typeof searchSorted>;
 export type ResultFailedAction = ReturnType<typeof searchFailed>;
 
 export type SearchAction =
   | SearchRequestAction
   | SearchLoadedAction
   | SearchSortingAction
+  | SearchSortedAction
   | ResultFailedAction;

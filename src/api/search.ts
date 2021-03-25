@@ -16,7 +16,7 @@ export const getQuestionsByTag = async (tag: string) => {
   return data;
 };
 
-export const getQuestionsByUser = async (userId: string) => {
+export const getQuestionsByUser = async (userId: string | number) => {
   const urlSearchByUser = `${URL_API}users/${userId}/questions?order=desc&sort=votes&site=stackoverflow`;
 
   const res = await fetch(urlSearchByUser);

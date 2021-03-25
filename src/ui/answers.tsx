@@ -9,7 +9,7 @@ export const Answers = () => {
 
   return (
     <div className="answers">
-      {questionInfo.items.map((item: any) => (
+      {questionInfo.answers.map(item => (
         <div className="answers_item" key={item.answer_id}>
           <span className="answers_item__score">{item.score}</span>
           <div dangerouslySetInnerHTML={{ __html: item.body }} />

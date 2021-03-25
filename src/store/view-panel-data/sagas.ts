@@ -1,6 +1,6 @@
 import { put, call, takeLatest, takeEvery } from 'redux-saga/effects';
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
-import { TSearchBy } from 'src/types';
+import { TSearchBy, TSearchResponse } from 'src/types';
 import { ViewPanelDataRequestAction } from './actions';
 import {
   QUICK_VIEW_PANEL_DATA_LOADED,
@@ -9,11 +9,11 @@ import {
 
 export const fetchViewPanelData = async (
   searchByType: TSearchBy,
-  searchByValue: string,
+  searchByValue: string | number,
 ) => {
   let data;
   if (searchByType === 'tag') {
-    data = await getQuestionsByTag(searchByValue);
+    data = await getQuestionsByTag(searchByValue as string);
   }
 
   if (searchByType === 'author') {
@@ -24,12 +24,14 @@ export const fetchViewPanelData = async (
 };
 
 function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
-  const payload: { data: any } = yield call(
+  const response: TSearchResponse = yield call(
     fetchViewPanelData,
     action.payload.searchByType,
     action.payload.searchByValue,
   );
-  yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload });
+
+  const viewPanelData = response.items;
+  yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload: viewPanelData });
 }
 
 export function* watchViewPanelData() {

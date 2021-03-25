@@ -1,6 +1,6 @@
 import { takeEvery, put, call, getContext, select } from 'redux-saga/effects';
 import { getQuestionsBySearchQuery } from 'src/api';
-import { TReducer, TSortBy } from 'src/types';
+import { TReducer, TSearchResponse, TSortBy } from 'src/types';
 import { sort } from 'src/utils';
 import { SearchRequestAction, SearchSortingAction } from './actions';
 import {
@@ -8,6 +8,7 @@ import {
   SEARCH_RESULT_LOADED,
   SEARCH_RESULT_SORTING,
   SEARCH_ERROR,
+  SEARCH_RESULT_SORTED,
 } from './types';
 
 export const fetchSearchResult = async (searchQuery: string) => {
@@ -17,10 +18,11 @@ export const fetchSearchResult = async (searchQuery: string) => {
 
 function* sagaSearch(action: SearchRequestAction) {
   try {
-    const payload: { data: any } = yield call(
+    const response: TSearchResponse = yield call(
       fetchSearchResult,
       action.payload,
     );
+    const payload = response.items;
     yield put({ type: SEARCH_RESULT_LOADED, payload });
   } catch (e) {
     yield put({ type: SEARCH_ERROR, e });
@@ -30,10 +32,9 @@ function* sagaSearch(action: SearchRequestAction) {
 function* sagaSorting(action: SearchSortingAction) {
   try {
     const state: TReducer = yield select();
-    console.log(state.search.searchResult);
-
-    const searchResult = state.search.searchResult.items;
-    const sortingSearchResult = searchResult.sort(sort('score'));
+    const searchResult = Array.from(state.search.searchResult);
+    const sortingSearchResult = searchResult.sort(sort(action.payload));
+    yield put({ type: SEARCH_RESULT_SORTED, payload: sortingSearchResult });
   } catch (e) {
     yield put({ type: SEARCH_ERROR, e });
   }

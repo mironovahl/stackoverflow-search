@@ -1,4 +1,4 @@
-import { TSearchBy } from 'src/types';
+import { TSearchBy, TSearchItem } from 'src/types';
 import {
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
@@ -6,14 +6,14 @@ import {
 
 export const viewPanelDataRequest = (
   searchByType: TSearchBy,
-  searchByValue: string,
+  searchByValue: string | number,
 ) =>
   ({
     type: QUICK_VIEW_PANEL_DATA_REQUEST,
     payload: { searchByType, searchByValue },
   } as const);
 
-export const viewPanelDataLoaded = (viewPanelData: any) =>
+export const viewPanelDataLoaded = (viewPanelData: TSearchItem[]) =>
   ({
     type: QUICK_VIEW_PANEL_DATA_LOADED,
     payload: viewPanelData,

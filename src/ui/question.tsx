@@ -9,12 +9,12 @@ export const Question = () => {
 
   return (
     <div className="question_info">
-      <h2 className="question_info__title">{questionInfo.items[0].title}</h2>
+      <h2 className="question_info__title">{questionInfo.title}</h2>
       <p
         className="question_info__body"
-        dangerouslySetInnerHTML={{ __html: questionInfo.items[0].body }}
+        dangerouslySetInnerHTML={{ __html: questionInfo.body }}
       />
-      <p>{questionInfo.items[0].answer_count} Answers</p>
+      <p>{questionInfo.answer_count} Answers</p>
     </div>
   );
 };
