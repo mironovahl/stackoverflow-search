@@ -10,6 +10,7 @@ export const SortButtons = () => {
     dispatch(searchSorting(value));
     dispatch(viewPanelDataSorting(value));
   };
+
   return (
     <div className="sorting">
       <p className="sorting_title">Sort by</p>

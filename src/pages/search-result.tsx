@@ -36,7 +36,7 @@ export const SearchResultPage = () => {
   return (
     <div className="search-result">
       <div className="wrapper">
-        <p className="result_title">Search result for "{searchQuery}"</p>
+        <p className="result_title">Search result for {searchQuery}</p>
         <div className="result_content">
           <ResultContent
             searchResult={searchResult}

@@ -26,6 +26,7 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
+        moduleDirectory: ['node_modules', './'],
       },
     },
   },
@@ -44,6 +45,8 @@ module.exports = {
     ],
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

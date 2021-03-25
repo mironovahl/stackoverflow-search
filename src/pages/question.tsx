@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { questionRequest } from 'src/store/question';
 import { TReducer } from 'src/types';
 import { Answers } from 'src/ui/answers';

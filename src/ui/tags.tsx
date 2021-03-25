@@ -9,8 +9,8 @@ interface ITagsProps {
 export const Tags = ({ tags, handleClick }: ITagsProps) => {
   return (
     <div className="tags">
-      {tags.map((tag, i) => (
-        <span key={i} onClick={() => handleClick('tag', tag)} className="tag">
+      {tags.map(tag => (
+        <span key={tag} onClick={() => handleClick('tag', tag)} className="tag">
           {tag}
         </span>
       ))}

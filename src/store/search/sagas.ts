@@ -1,6 +1,6 @@
-import { takeEvery, put, call, getContext, select } from 'redux-saga/effects';
+import { takeEvery, put, call, select } from 'redux-saga/effects';
 import { getQuestionsBySearchQuery } from 'src/api';
-import { TReducer, TSearchResponse, TSortBy } from 'src/types';
+import { TReducer, TSearchResponse } from 'src/types';
 import { sort } from 'src/utils';
 import { SearchRequestAction, SearchSortingAction } from './actions';
 import {

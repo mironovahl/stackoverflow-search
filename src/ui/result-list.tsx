@@ -13,7 +13,11 @@ export const ResultList = ({
   return (
     <div className="search-result_list">
       {searchResult.map(item => (
-        <ResultItem searchData={item} setShowPanel={setShowPanel} />
+        <ResultItem
+          key={item.question_id}
+          searchData={item}
+          setShowPanel={setShowPanel}
+        />
       ))}
     </div>
   );
