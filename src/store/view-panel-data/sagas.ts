@@ -1,10 +1,16 @@
-import { put, call, takeEvery } from 'redux-saga/effects';
+import { put, call, takeEvery, select } from 'redux-saga/effects';
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
-import { TSearchBy, TSearchResponse } from 'src/types';
-import { ViewPanelDataRequestAction } from './actions';
+import { TReducer, TSearchBy, TSearchResponse } from 'src/types';
+import { sort } from 'src/utils';
+import {
+  ViewPanelDataRequestAction,
+  ViewPanelDataSortingAction,
+} from './actions';
 import {
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
+  QUICK_VIEW_PANEL_DATA_SORTING,
+  QUICK_VIEW_PANEL_DATA_SORTED,
   VIEW_PANEL_DATA_ERROR,
 } from './types';
 
@@ -39,9 +45,27 @@ function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
   }
 }
 
+function* sagaSorting(action: ViewPanelDataSortingAction) {
+  try {
+    const state: TReducer = yield select();
+    const viewPanelData = Array.from(state.viewPanelData.viewPanelData);
+    const sortingResult = viewPanelData.sort(sort(action.payload));
+    yield put({
+      type: QUICK_VIEW_PANEL_DATA_SORTED,
+      payload: sortingResult,
+    });
+  } catch (e) {
+    yield put({ type: VIEW_PANEL_DATA_ERROR, payload: e });
+  }
+}
+
 export function* watchViewPanelData() {
   yield takeEvery<ViewPanelDataRequestAction>(
     QUICK_VIEW_PANEL_DATA_REQUEST,
     sagaGetViewPanelData,
+  );
+  yield takeEvery<ViewPanelDataSortingAction>(
+    QUICK_VIEW_PANEL_DATA_SORTING,
+    sagaSorting,
   );
 }

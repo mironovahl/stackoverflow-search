@@ -20,6 +20,7 @@ export type TViewPanelData = {
   viewPanelData: TSearchItem[];
   searchByType: TSearchBy;
   searchByValue: string;
+  sortBy: TSortBy;
   loading: boolean;
   error: null | string;
 };
