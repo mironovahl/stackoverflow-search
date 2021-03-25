@@ -1,10 +1,11 @@
-import { put, call, takeLatest, takeEvery } from 'redux-saga/effects';
+import { put, call, takeEvery } from 'redux-saga/effects';
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
 import { TSearchBy, TSearchResponse } from 'src/types';
 import { ViewPanelDataRequestAction } from './actions';
 import {
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
+  VIEW_PANEL_DATA_ERROR,
 } from './types';
 
 export const fetchViewPanelData = async (
@@ -24,14 +25,18 @@ export const fetchViewPanelData = async (
 };
 
 function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
-  const response: TSearchResponse = yield call(
-    fetchViewPanelData,
-    action.payload.searchByType,
-    action.payload.searchByValue,
-  );
+  try {
+    const response: TSearchResponse = yield call(
+      fetchViewPanelData,
+      action.payload.searchByType,
+      action.payload.searchByValue,
+    );
 
-  const viewPanelData = response.items;
-  yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload: viewPanelData });
+    const viewPanelData = response.items;
+    yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload: viewPanelData });
+  } catch (e) {
+    yield put({ type: VIEW_PANEL_DATA_ERROR, payload: e });
+  }
 }
 
 export function* watchViewPanelData() {

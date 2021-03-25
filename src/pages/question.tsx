@@ -20,8 +20,14 @@ export const QuestionPage = () => {
   }, [id]);
 
   const loading = useSelector((state: TReducer) => state.question.loading);
+  const error = useSelector((state: TReducer) => state.question.error);
+
   if (loading) {
     return <Spinner />;
+  }
+
+  if (error) {
+    return <p>Something went wrong...</p>;
   }
 
   return (

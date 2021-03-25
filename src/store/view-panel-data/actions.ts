@@ -2,6 +2,7 @@ import { TSearchBy, TSearchItem } from 'src/types';
 import {
   QUICK_VIEW_PANEL_DATA_LOADED,
   QUICK_VIEW_PANEL_DATA_REQUEST,
+  VIEW_PANEL_DATA_ERROR,
 } from './types';
 
 export const viewPanelDataRequest = (
@@ -19,11 +20,19 @@ export const viewPanelDataLoaded = (viewPanelData: TSearchItem[]) =>
     payload: viewPanelData,
   } as const);
 
+export const viewPanelDataFiled = (error: string) =>
+  ({
+    type: VIEW_PANEL_DATA_ERROR,
+    payload: error,
+  } as const);
+
 export type ViewPanelDataRequestAction = ReturnType<
   typeof viewPanelDataRequest
 >;
 export type ViewPanelDataLoadedAction = ReturnType<typeof viewPanelDataLoaded>;
+export type ViewPanelDataFailedAction = ReturnType<typeof viewPanelDataFiled>;
 
 export type ViewPanelDataAction =
   | ViewPanelDataLoadedAction
-  | ViewPanelDataRequestAction;
+  | ViewPanelDataRequestAction
+  | ViewPanelDataFailedAction;

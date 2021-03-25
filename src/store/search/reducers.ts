@@ -13,7 +13,7 @@ const initialState: TSearch = {
   searchResult: [],
   searchValue: '',
   loading: true,
-  searchError: null,
+  error: null,
   sortBy: null,
 };
 
@@ -23,7 +23,7 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
       return {
         ...state,
         loading: true,
-        searchError: null,
+        error: null,
       };
     }
 
@@ -32,6 +32,7 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
         ...state,
         searchResult: action.payload,
         loading: false,
+        error: null,
       };
     }
 
@@ -40,6 +41,7 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
         ...state,
         sortBy: action.payload,
         loading: false,
+        error: null,
       };
     }
     case SEARCH_RESULT_SORTED: {
@@ -47,13 +49,14 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
         ...state,
         searchResult: action.payload,
         loading: false,
+        error: null,
       };
     }
 
     case SEARCH_ERROR: {
       return {
         ...state,
-        searchError: action.payload,
+        error: action.payload,
         loading: false,
       };
     }

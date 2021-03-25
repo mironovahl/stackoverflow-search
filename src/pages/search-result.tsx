@@ -12,6 +12,8 @@ export const SearchResultPage = () => {
   const query = useQuery();
   const searchQuery = query.get('q') as '';
 
+  const [showPanel, setShowPanel] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,11 +23,8 @@ export const SearchResultPage = () => {
   const searchResult = useSelector(
     (state: TReducer) => state.search.searchResult,
   );
-  console.log(searchResult);
   const loading = useSelector((state: TReducer) => state.search.loading);
-  const error = useSelector((state: TReducer) => state.search.searchError);
-
-  const [showPanel, setShowPanel] = useState(false);
+  const error = useSelector((state: TReducer) => state.search.error);
 
   if (loading) {
     return <Spinner />;

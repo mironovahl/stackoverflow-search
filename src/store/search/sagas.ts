@@ -25,7 +25,7 @@ function* sagaSearch(action: SearchRequestAction) {
     const payload = response.items;
     yield put({ type: SEARCH_RESULT_LOADED, payload });
   } catch (e) {
-    yield put({ type: SEARCH_ERROR, e });
+    yield put({ type: SEARCH_ERROR, payload: e });
   }
 }
 
@@ -36,7 +36,7 @@ function* sagaSorting(action: SearchSortingAction) {
     const sortingSearchResult = searchResult.sort(sort(action.payload));
     yield put({ type: SEARCH_RESULT_SORTED, payload: sortingSearchResult });
   } catch (e) {
-    yield put({ type: SEARCH_ERROR, e });
+    yield put({ type: SEARCH_ERROR, payload: e });
   }
 }
 

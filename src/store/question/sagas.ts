@@ -2,7 +2,11 @@ import { put, call, takeLatest } from 'redux-saga/effects';
 import { getQuestionInfo } from 'src/api';
 import { TQuestionInfoResponse } from 'src/types';
 import { QuestionRequestAction } from './actions';
-import { QUESTION_INFO_REQUEST, QUESTION_INFO_LOADED } from './types';
+import {
+  QUESTION_INFO_REQUEST,
+  QUESTION_INFO_LOADED,
+  QUESTION_ERROR,
+} from './types';
 
 export const fetchQuestionInfo = async (questionId: string) => {
   const data = await getQuestionInfo(questionId);
@@ -10,13 +14,17 @@ export const fetchQuestionInfo = async (questionId: string) => {
 };
 
 function* sagaGetQuestionInfo(action: QuestionRequestAction) {
-  const response: TQuestionInfoResponse = yield call(
-    fetchQuestionInfo,
-    action.payload,
-  );
+  try {
+    const response: TQuestionInfoResponse = yield call(
+      fetchQuestionInfo,
+      action.payload,
+    );
 
-  const questionInfo = response.items[0];
-  yield put({ type: QUESTION_INFO_LOADED, payload: questionInfo });
+    const questionInfo = response.items[0];
+    yield put({ type: QUESTION_INFO_LOADED, payload: questionInfo });
+  } catch (e) {
+    yield put({ type: QUESTION_ERROR, payload: e });
+  }
 }
 
 export function* watchQuestion() {

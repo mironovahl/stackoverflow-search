@@ -31,7 +31,7 @@ export const searchSorted = (resultSorting: TSearchItem[]) =>
     payload: resultSorting,
   } as const);
 
-export const searchFailed = (error: any) =>
+export const searchFailed = (error: string) =>
   ({
     type: SEARCH_ERROR,
     payload: error,

@@ -5,15 +5,15 @@ export type TSearch = {
   searchResult: TSearchItem[];
   searchValue: string;
   loading: boolean;
-  searchError: null;
   sortBy: TSortBy;
+  error: null | string;
 };
 
 export type TQuestion = {
   questionInfo: TQuestionInfo;
   guestionId: string;
   loading: boolean;
-  questionError: null;
+  error: null | string;
 };
 
 export type TViewPanelData = {
@@ -21,7 +21,7 @@ export type TViewPanelData = {
   searchByType: TSearchBy;
   searchByValue: string;
   loading: boolean;
-  error: null;
+  error: null | string;
 };
 
 export type TReducer = {
