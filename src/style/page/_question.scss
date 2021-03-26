@@ -1,6 +1,6 @@
-.question_content {
-
+.question_content, .answers {
   padding: 12px;
+  color: $color-text-primary;
   div, p {
     max-width: 100%;
   }
