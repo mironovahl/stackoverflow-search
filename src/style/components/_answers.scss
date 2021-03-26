@@ -5,7 +5,7 @@
    margin: 32px 0px;
   border-radius: 24px;
 
-  background: linear-gradient(145deg, #ededed, #e0e0e0);
+  background: linear-gradient(145deg, $color-gradient-first, $color-gradient-second);
   @include box-shadow(2px 2px 3px $color-shadow, -2px -2px 3px $color-white);
 }
 

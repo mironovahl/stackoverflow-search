@@ -13,7 +13,7 @@ const camelizeObject = <T extends Record<string, unknown>>(obj: T) => {
   return result;
 };
 
-export const getCamelCase = <T extends unknown>(input: T) => {
+export const convertCamelCase = <T extends unknown>(input: T) => {
   if (typeof input === 'string') {
     return camelCase(input);
   }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { TReducer } from 'src/types';
+import { Spinner } from 'src/ui/spinner';
+
 import { ResultList } from './result-list';
-import { Spinner } from './spinner';
 
 export const QuickViewPanel = () => {
   const loading = useSelector((state: TReducer) => state.viewPanelData.loading);

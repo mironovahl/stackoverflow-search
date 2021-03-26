@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { TSearchItem } from 'src/types';
+
 import { ResultItem } from './result-item';
 
 interface IResultListProps {

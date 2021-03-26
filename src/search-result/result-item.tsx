@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
+
 import { TReducer, TSearchBy, TSearchItem } from 'src/types';
-import { getCamelCase } from 'src/utils/get-camel-case';
-import { Author } from './author';
-import { Tags } from './tags';
+import { Author } from 'src/ui/author';
+import { Tags } from 'src/ui/tags';
 
 interface IRowTable {
   setShowPanel?: (value: boolean) => void;
@@ -35,7 +36,6 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
     openQuickViewPanel('author', userId);
   };
 
-  console.log(getCamelCase(searchData));
   const { owner } = searchData;
 
   return (

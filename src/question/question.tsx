@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { TReducer } from 'src/types';
-import { Author } from './author';
-import { Tags } from './tags';
+import { Author } from 'src/ui/author';
+import { Tags } from 'src/ui/tags';
 
 export const Question = () => {
   const questionInfo = useSelector(
@@ -14,6 +15,7 @@ export const Question = () => {
       <h2 className="question_content__title">{questionInfo.title}</h2>
       <p
         className="question_content__body"
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: questionInfo.body }}
       />
       <div className="question_content__info">

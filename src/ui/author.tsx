@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { TOwner } from 'src/types';
 
 interface IAuthorProps {

@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { SearchPage } from 'src/pages/search';
-import { SearchResultPage } from 'src/pages/search-result';
-import { NotFoundPage } from 'src/pages/not-found';
-import { QuestionPage } from 'src/pages/question';
+import { SearchPage } from 'src/search/search.page';
+import { SearchResultPage } from 'src/search-result/search-result.page';
+import { NotFoundPage } from 'src/pages/not-found.page';
+import { QuestionPage } from 'src/question/question.page';
 
 const Routes = (): ReactElement => (
   <BrowserRouter>

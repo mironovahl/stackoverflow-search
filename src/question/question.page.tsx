@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { questionRequest } from 'src/store/question';
 import { TReducer } from 'src/types';
-import { Answers } from 'src/ui/answers';
-import { Question } from 'src/ui/question';
+import { Answers } from 'src/question/answers';
+import { Question } from 'src/question/question';
 import { Spinner } from 'src/ui/spinner';
 
 interface IParams {

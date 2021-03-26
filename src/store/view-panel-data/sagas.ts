@@ -8,7 +8,7 @@ import {
   TSearchResponse,
 } from 'src/types';
 import { sort } from 'src/utils';
-import { getCamelCase } from 'src/utils/get-camel-case';
+import { convertCamelCase } from 'src/utils/convert-camel-case';
 import {
   ViewPanelDataRequestAction,
   ViewPanelDataSortingAction,
@@ -45,8 +45,8 @@ function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
       action.payload.searchByValue,
     );
     const viewPanelData = response.items.map(item => {
-      const transformItem = getCamelCase(item) as TSearchItem;
-      transformItem.owner = getCamelCase(transformItem.owner) as TOwner;
+      const transformItem = convertCamelCase(item) as TSearchItem;
+      transformItem.owner = convertCamelCase(transformItem.owner) as TOwner;
       return transformItem;
     });
     yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload: viewPanelData });
