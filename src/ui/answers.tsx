@@ -11,6 +11,8 @@ export const Answers = () => {
 
   return (
     <div className="answers">
+      <p className="answers-count">{questionInfo.answer_count} Answers</p>
+
       {hasAnswers &&
         questionInfo.answers.map(item => (
           <div className="answers_item" key={item.answer_id}>

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
 import { TSearchBy, TSearchItem } from 'src/types';
+import { Author } from './author';
 import { Tags } from './tags';
 
 interface IRowTable {
@@ -19,41 +20,31 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
     }
   };
 
+  const handleClickAuthor = (userId: number) => {
+    openQuickViewPanel('author', userId);
+  };
+
   const { owner } = searchData;
 
   return (
     <div className="search-result_item">
       <Link
-        target="_blank"
-        rel="noopener noreferrer"
         className="search-result_item__theme"
         to={`/question/${searchData.question_id}`}
       >
         {searchData.title}
       </Link>
       <Link
-        target="_blank"
-        rel="noopener noreferrer"
         className="search-result_item__answers"
         to={`/question/${searchData.question_id}`}
       >
         <span>{searchData.answer_count}</span>
         <span> answers </span>
       </Link>
-      <div
-        className="search-result_item__author"
-        onClick={() => openQuickViewPanel('author', owner.user_id)}
-      >
-        <img
-          className="search-result_item__author_avatar"
-          src={owner.profile_image}
-          alt=""
-        />
-        <p className="search-result_item__author_name">
-          {searchData.owner.display_name}
-        </p>
+      <div className="search-result_item__info">
+        <Author handleClick={handleClickAuthor} author={owner} />
+        <Tags handleClick={openQuickViewPanel} tags={searchData.tags} />
       </div>
-      <Tags handleClick={openQuickViewPanel} tags={searchData.tags} />
     </div>
   );
 };

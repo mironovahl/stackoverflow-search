@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
-import { ResultContent } from './result-content';
+import { ResultList } from './result-list';
 import { Spinner } from './spinner';
 
 export const QuickViewPanel = () => {
@@ -12,6 +12,16 @@ export const QuickViewPanel = () => {
     (state: TReducer) => state.viewPanelData.viewPanelData,
   );
 
+  const value = useSelector(
+    (state: TReducer) => state.viewPanelData.searchByValue,
+  );
+
+  const type = useSelector(
+    (state: TReducer) => state.viewPanelData.searchByType,
+  );
+
+  const hasResult = viewPanelData.length !== 0;
+
   if (loading) {
     return <Spinner />;
   }
@@ -20,9 +30,19 @@ export const QuickViewPanel = () => {
     return <p>Something went wrong...</p>;
   }
 
+  if (!hasResult) {
+    return <p>Result not found</p>;
+  }
+
+  const typeQuestions = type === 'tag' ? 'tagged' : 'the users id';
+
   return (
-    <>
-      <ResultContent searchResult={viewPanelData} />
-    </>
+    <div>
+      <p className="result_title">
+        Questions {typeQuestions} {value}
+      </p>
+
+      <ResultList searchResult={viewPanelData} searchValue={value} />
+    </div>
   );
 };

@@ -14,7 +14,7 @@
   background: linear-gradient(145deg, #fbfbfb, #e0e0e0);
   box-shadow:  5px 5px 10px #d4d4d4,
                -5px -5px 10px #ffffff;
-              }
+  }
 
 .search-result_item__theme {
   max-width: calc(100% - 50px);
@@ -34,27 +34,25 @@
   height: 40px;
   border-radius: 8px;
 
-
   box-shadow:  1px 1px 5px #d1d1d1,
-   -1px -1px 5px #ffffff;
-
-
+   -1px -1px 5px $color-white;
 }
 
 
-.search-result_item__author {
-  max-width: 200px;
-  width: 30%;
-  min-height: 40px;
-  display: flex;
-  &_avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-  }
+.search-result_item__info {
+  display: flex;  
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  
+  margin-top: 24px;
+  // border-top: 1px solid black;
+  padding: 12px 0 0;
 
-  &_name {
-    margin: 0 12px 0;
-    font-size: 14px;
+   .tags {
+     //justify-content: end;
+   }
+
+  .author {
   }
 }

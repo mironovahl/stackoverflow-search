@@ -5,7 +5,8 @@ import { TReducer } from 'src/types';
 import { QuickViewPanel } from 'src/ui/quick-view-panel';
 import { searchRequest } from 'src/store/search';
 import { Spinner } from 'src/ui/spinner';
-import { ResultContent } from 'src/ui/result-content';
+import { ResultList } from 'src/ui/result-list';
+import { SortButtons } from './sort-buttons';
 
 export const SearchResultPage = () => {
   const query = useQuery();
@@ -36,12 +37,17 @@ export const SearchResultPage = () => {
   return (
     <div className="search-result">
       <div className="wrapper">
-        <p className="result_title">Search result for {searchQuery}</p>
+        <SortButtons />
         <div className="result_content">
-          <ResultContent
-            searchResult={searchResult}
-            setShowPanel={setShowPanel}
-          />
+          <div>
+            <p className="result_title">Search result for {searchQuery}</p>
+
+            <ResultList
+              searchResult={searchResult}
+              setShowPanel={setShowPanel}
+              searchValue={searchQuery}
+            />
+          </div>
           {showPanel && <QuickViewPanel />}
         </div>
       </div>

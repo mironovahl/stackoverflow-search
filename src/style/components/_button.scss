@@ -9,10 +9,10 @@
   color: $color-text-primary;
   background: linear-gradient(145deg, #fbfbfb, #e0e0e0);
   box-shadow: 5px 5px 7px #d1d1d1,
-             -5px -5px 7px #ffffff;
+             -5px -5px 7px $color-white;
 
   &:active {
     box-shadow:inset 5px 5px 7px #d1d1d1,
-    inset -5px -5px 7px #ffffff;
+    inset -5px -5px 7px $color-white;
   }
 }

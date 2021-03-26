@@ -26,6 +26,9 @@ export const viewPanelDataReducer = (
     case QUICK_VIEW_PANEL_DATA_REQUEST: {
       return {
         ...state,
+        searchByType: action.payload.searchByType,
+        searchByValue: action.payload.searchByValue,
+
         loading: true,
         error: null,
       };

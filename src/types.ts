@@ -48,7 +48,7 @@ export type TSearchItem = {
   view_count: number;
 };
 
-type TOwner = {
+export type TOwner = {
   display_name: string;
   link: string;
   profile_image: string;
