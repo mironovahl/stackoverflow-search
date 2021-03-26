@@ -32,7 +32,7 @@ export const SortButtons = () => {
         <button
           className="btn"
           type="button"
-          onClick={() => handleClick('answer_count')}
+          onClick={() => handleClick('answerCount')}
         >
           Answers
         </button>

@@ -1,5 +1,5 @@
 export type TSearchBy = 'tag' | 'author' | null;
-export type TSortBy = 'title' | 'tags' | 'answer_count' | 'owner' | null;
+export type TSortBy = 'title' | 'tags' | 'answerCount' | 'owner' | null;
 
 export type TSearch = {
   searchResult: TSearchItem[];
@@ -34,67 +34,67 @@ export type TReducer = {
 };
 
 export type TSearchItem = {
-  answer_count: number;
-  content_license: string;
-  creation_date: Date;
-  is_answered: boolean;
-  last_activity_date: Date;
+  answerCount: number;
+  contentLicense: string;
+  creationDate: Date;
+  isAnswered: boolean;
+  lastActivityDate: Date;
   link: string;
   owner: TOwner;
-  question_id: number;
+  questionId: number;
   score: number;
   tags: string[];
   title: string;
-  view_count: number;
+  viewCount: number;
 };
 
 export type TOwner = {
-  display_name: string;
+  displayName: string;
   link: string;
-  profile_image: string;
+  profileImage: string;
   reputation: number;
-  user_id: number;
-  user_type: string;
+  userId: number;
+  userType: string;
 };
 
 export type TSearchResponse = {
-  has_more: boolean;
+  hasMore: boolean;
   items: TSearchItem[];
-  quota_max: number;
-  quota_remaining: number;
+  quotaMax: number;
+  quotaRemaining: number;
 };
 
 export type TAnswer = {
-  answer_id: number;
+  answerId: number;
   body: string;
-  content_license: number;
-  creation_date: Date;
-  is_accepted: boolean;
-  last_activity_date: Date;
+  contentLicense: number;
+  creationDate: Date;
+  isAccepted: boolean;
+  lastActivityDate: Date;
   owner: TOwner;
-  question_id: number;
+  questionId: number;
   score: number;
 };
 
 export type TQuestionInfo = {
-  answer_count: number;
+  answerCount: number;
   answers: TAnswer[];
   body: string;
-  creation_date: Date;
-  is_answered: boolean;
-  last_activity_date: Date;
+  creationDate: Date;
+  isAnswered: boolean;
+  lastActivityDate: Date;
   link: string;
   owner: TOwner;
-  question_id: number;
+  questionId: number;
   score: number;
   tags: string[];
   title: string;
-  view_count: number;
+  viewCount: number;
 };
 
 export type TQuestionInfoResponse = {
-  has_more: boolean;
+  hasMore: boolean;
   items: TQuestionInfo[];
-  quota_max: number;
-  quota_remaining: number;
+  quotaMax: number;
+  quotaRemaining: number;
 };

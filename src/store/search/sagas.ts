@@ -1,7 +1,8 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
 import { getQuestionsBySearchQuery } from 'src/api';
-import { TReducer, TSearchResponse } from 'src/types';
+import { TOwner, TReducer, TSearchItem, TSearchResponse } from 'src/types';
 import { sort } from 'src/utils';
+import { getCamelCase } from 'src/utils/get-camel-case';
 import { SearchRequestAction, SearchSortingAction } from './actions';
 import {
   SEARCH_REQUEST,
@@ -22,7 +23,12 @@ function* sagaSearch(action: SearchRequestAction) {
       fetchSearchResult,
       action.payload,
     );
-    const payload = response.items;
+
+    const payload = response.items.map(item => {
+      const transformItem = getCamelCase(item) as TSearchItem;
+      transformItem.owner = getCamelCase(transformItem.owner) as TOwner;
+      return transformItem;
+    });
     yield put({ type: SEARCH_RESULT_LOADED, payload });
   } catch (e) {
     yield put({ type: SEARCH_ERROR, payload: e });

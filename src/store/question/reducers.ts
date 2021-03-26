@@ -8,28 +8,28 @@ import {
 import { QuestionAction } from './actions';
 
 const defaultOwner: TQuestionInfo['owner'] = {
-  display_name: '',
+  displayName: '',
   link: '',
-  profile_image: '',
+  profileImage: '',
   reputation: 0,
-  user_id: 0,
-  user_type: '',
+  userId: 0,
+  userType: '',
 };
 
 const defaultQuestionInfo: TQuestionInfo = {
-  answer_count: 0,
+  answerCount: 0,
   answers: [],
   body: '',
-  creation_date: new Date(),
-  is_answered: false,
-  last_activity_date: new Date(),
+  creationDate: new Date(),
+  isAnswered: false,
+  lastActivityDate: new Date(),
   link: '',
   owner: defaultOwner,
-  question_id: 0,
+  questionId: 0,
   score: 0,
   tags: [],
   title: '',
-  view_count: 0,
+  viewCount: 0,
 };
 
 const initialState: TQuestion = {

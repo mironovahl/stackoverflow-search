@@ -1,22 +1,22 @@
-// import camelCase from 'lodash/camelCase';
+import camelCase from 'lodash/camelCase';
+
 export {};
-// const camelizeObject = <T extends Record<string, unknown>>(obj: T): T => {
-//   const result = Object.keys(obj).reduce((acc, key) => {
-//     acc[camelCase(key)] = obj[key];
-//     return acc;
-//   }, {});
+const camelizeObject = <T extends Record<string, unknown>>(obj: T) => {
+  const result = Object.keys(obj).reduce<Record<string, unknown>>(
+    (acc, key) => {
+      acc[camelCase(key)] = obj[key];
+      return acc;
+    },
+    {},
+  );
 
-//   return result;
-// };
+  return result;
+};
 
-// export const getCamelCase = <T extends unknown>(input: T): T => {
-//   if (typeof input === 'string') {
-//     return camelCase(input) as T;
-//   }
+export const getCamelCase = <T extends unknown>(input: T) => {
+  if (typeof input === 'string') {
+    return camelCase(input);
+  }
 
-//   if (Array.isArray(input)) {
-//     return;
-//   }
-
-//   return input;
-// };
+  return camelizeObject(input as Record<string, unknown>);
+};

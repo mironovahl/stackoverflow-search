@@ -14,7 +14,7 @@ export const ResultList = ({
     <div className="search-result_list">
       {searchResult.map(item => (
         <ResultItem
-          key={item.question_id}
+          key={item.questionId}
           searchData={item}
           setShowPanel={setShowPanel}
         />

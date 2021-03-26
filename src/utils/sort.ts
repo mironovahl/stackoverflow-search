@@ -9,10 +9,10 @@ export const sort = (param: TSortBy) => (
   }
 
   if (param === 'owner') {
-    if (a.owner.display_name > b.owner.display_name) {
+    if (a.owner.displayName > b.owner.displayName) {
       return -1;
     }
-    if (a.owner.display_name < b.owner.display_name) {
+    if (a.owner.displayName < b.owner.displayName) {
       return 1;
     }
   }

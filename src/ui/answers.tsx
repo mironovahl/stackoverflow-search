@@ -7,15 +7,15 @@ export const Answers = () => {
     (state: TReducer) => state.question.questionInfo,
   );
 
-  const hasAnswers = questionInfo.answer_count > 0;
+  const hasAnswers = questionInfo.answerCount > 0;
 
   return (
     <div className="answers">
-      <p className="answers-count">{questionInfo.answer_count} Answers</p>
+      <p className="answers-count">{questionInfo.answerCount} Answers</p>
 
       {hasAnswers &&
         questionInfo.answers.map(item => (
-          <div className="answers_item" key={item.answer_id}>
+          <div className="answers_item" key={item.answerId}>
             <span className="answers_item__score">{item.score}</span>
             <div dangerouslySetInnerHTML={{ __html: item.body }} />
           </div>

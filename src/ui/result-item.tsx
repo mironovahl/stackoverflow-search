@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
 import { TReducer, TSearchBy, TSearchItem } from 'src/types';
+import { getCamelCase } from 'src/utils/get-camel-case';
 import { Author } from './author';
 import { Tags } from './tags';
 
@@ -34,21 +35,22 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
     openQuickViewPanel('author', userId);
   };
 
+  console.log(getCamelCase(searchData));
   const { owner } = searchData;
 
   return (
     <div className="search-result_item">
       <Link
         className="search-result_item__theme"
-        to={`/question/${searchData.question_id}`}
+        to={`/question/${searchData.questionId}`}
       >
         {searchData.title}
       </Link>
       <Link
         className="search-result_item__answers"
-        to={`/question/${searchData.question_id}`}
+        to={`/question/${searchData.questionId}`}
       >
-        <span>{searchData.answer_count}</span>
+        <span>{searchData.answerCount}</span>
         <span> answers </span>
       </Link>
       <div className="search-result_item__info">
