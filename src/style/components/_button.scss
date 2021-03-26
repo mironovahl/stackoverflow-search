@@ -1,6 +1,6 @@
 .btn {
   padding: 8px;
-  min-width: 80px;
+  min-width: 72px;
   cursor: pointer;
   min-height: 36px;
   border-radius: 24px;
@@ -8,11 +8,16 @@
   outline: none;
   color: $color-text-primary;
   background: linear-gradient(145deg, #fbfbfb, #e0e0e0);
-  box-shadow: 5px 5px 7px #d1d1d1,
-             -5px -5px 7px $color-white;
+
+  transition: 0.1s ease-in-out;
+
+  @include box-shadow(3px 3px 3px $color-shadow, -3px -3px 3px $color-white);
+
+  &:hover {
+    @include box-shadow(4px 4px 5px $color-shadow, -4px -4px 5px $color-white);
+  } 
 
   &:active {
-    box-shadow:inset 5px 5px 7px #d1d1d1,
-    inset -5px -5px 7px $color-white;
+    @include box-shadow( inset 3px 3px 3px $color-shadow, inset -3px -3px 3px $color-white);
   }
 }

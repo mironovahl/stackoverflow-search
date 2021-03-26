@@ -16,8 +16,7 @@
     border: none;
     outline: none;
     background-color: $color-background;
-    box-shadow: inset 5px 5px 7px #d1d1d1,
-                inset -5px -5px 7px $color-white;
+    @include box-shadow(inset 5px 5px 7px $color-shadow, inset -5px -5px 7px $color-white);
   }
 
   &__button {

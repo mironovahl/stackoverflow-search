@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { TReducer } from 'src/types';
 import { ResultList } from './result-list';
@@ -11,11 +11,9 @@ export const QuickViewPanel = () => {
   const viewPanelData = useSelector(
     (state: TReducer) => state.viewPanelData.viewPanelData,
   );
-
   const value = useSelector(
     (state: TReducer) => state.viewPanelData.searchByValue,
   );
-
   const type = useSelector(
     (state: TReducer) => state.viewPanelData.searchByType,
   );
@@ -37,7 +35,7 @@ export const QuickViewPanel = () => {
   const typeQuestions = type === 'tag' ? 'tagged' : 'the users id';
 
   return (
-    <div>
+    <div className="quick-view-panel">
       <p className="result_title">
         Questions {typeQuestions} <strong>{value}</strong>
       </p>

@@ -7,9 +7,34 @@ import {
 } from './types';
 import { QuestionAction } from './actions';
 
+const defaultOwner: TQuestionInfo['owner'] = {
+  display_name: '',
+  link: '',
+  profile_image: '',
+  reputation: 0,
+  user_id: 0,
+  user_type: '',
+};
+
+const defaultQuestionInfo: TQuestionInfo = {
+  answer_count: 0,
+  answers: [],
+  body: '',
+  creation_date: new Date(),
+  is_answered: false,
+  last_activity_date: new Date(),
+  link: '',
+  owner: defaultOwner,
+  question_id: 0,
+  score: 0,
+  tags: [],
+  title: '',
+  view_count: 0,
+};
+
 const initialState: TQuestion = {
-  questionInfo: {} as TQuestionInfo,
-  guestionId: '',
+  questionInfo: defaultQuestionInfo,
+  questionId: '',
   loading: true,
   error: null,
 };

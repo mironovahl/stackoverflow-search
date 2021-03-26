@@ -11,7 +11,7 @@ export type TSearch = {
 
 export type TQuestion = {
   questionInfo: TQuestionInfo;
-  guestionId: string;
+  questionId: string;
   loading: boolean;
   error: null | string;
 };

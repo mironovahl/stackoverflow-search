@@ -5,12 +5,13 @@
   align-items: flex-end;
   justify-content: flex-end;
   margin: 0;
-  span {
-    background-color: #f7f7f7;
-    border-radius: 4px;
-    margin: 2px;
-    padding: 2px 4px;
-    white-space: pre;
-    cursor: pointer;
-  }
+}
+
+.tag {
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  margin: 2px;
+  padding: 4px;
+  white-space: pre;
+  cursor: pointer;
 }

@@ -1,11 +1,14 @@
 .question_content__title {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $color-border;
   padding-bottom: 11px;
  }
 
 .question_content__info {
   display: flex;
+  justify-content: space-between;
   padding: 16px 0;
+  // border-top: 1px solid $color-border;
+
 }
 
 .question_content__body {
@@ -14,7 +17,8 @@
   border-radius: 8px;
 }
 .question_content {
-  box-shadow: 2px 2px 3px #d1d1d1, -2px -2px 3px $color-white;
+  @include box-shadow(2px 2px 3px $color-shadow, -2px -2px 3px $color-white);
+
   padding: 16px;
   border-radius: 12px;
 

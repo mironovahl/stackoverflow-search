@@ -6,9 +6,7 @@
   border-radius: 24px;
 
   background: linear-gradient(145deg, #ededed, #e0e0e0);
-  box-shadow: 2px 2px 3px #d1d1d1, -2px -2px 3px $color-white
-
-
+  @include box-shadow(2px 2px 3px $color-shadow, -2px -2px 3px $color-white);
 }
 
 .answers_item__score {
