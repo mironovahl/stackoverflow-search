@@ -1,8 +1,9 @@
 .result_content {
   width: 100%;
   display: flex;
-
+  justify-content: center;
   > div {
-    padding: 0 40px;
+    padding: 0 20px;
+    min-width: 50%;
   } 
 }

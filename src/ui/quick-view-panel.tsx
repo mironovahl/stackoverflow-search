@@ -39,10 +39,10 @@ export const QuickViewPanel = () => {
   return (
     <div>
       <p className="result_title">
-        Questions {typeQuestions} {value}
+        Questions {typeQuestions} <strong>{value}</strong>
       </p>
 
-      <ResultList searchResult={viewPanelData} searchValue={value} />
+      <ResultList searchResult={viewPanelData} />
     </div>
   );
 };

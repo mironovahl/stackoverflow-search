@@ -5,12 +5,10 @@ import { ResultItem } from './result-item';
 interface IResultListProps {
   searchResult: TSearchItem[];
   setShowPanel?: (value: boolean) => void;
-  searchValue: string;
 }
 export const ResultList = ({
   searchResult,
   setShowPanel,
-  searchValue,
 }: IResultListProps) => {
   return (
     <div className="search-result_list">

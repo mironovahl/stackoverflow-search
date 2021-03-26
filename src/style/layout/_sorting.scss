@@ -1,8 +1,9 @@
 .sorting {
   display: flex;
-  width: 80%;
   margin: auto;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .sorting_title {
@@ -11,7 +12,10 @@
 }
 
 .sorting_buttons {
-  width: 100%;
   display: flex;
   justify-content: space-between;
+
+  button {
+    margin: 0 12px;
+  }
 }

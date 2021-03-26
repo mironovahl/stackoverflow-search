@@ -4,4 +4,5 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  transition: width 1s ease-in-out;
 }

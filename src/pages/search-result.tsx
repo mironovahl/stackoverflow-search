@@ -40,12 +40,13 @@ export const SearchResultPage = () => {
         <SortButtons />
         <div className="result_content">
           <div>
-            <p className="result_title">Search result for {searchQuery}</p>
+            <p className="result_title">
+              Search result for <strong>{searchQuery}</strong>
+            </p>
 
             <ResultList
               searchResult={searchResult}
               setShowPanel={setShowPanel}
-              searchValue={searchQuery}
             />
           </div>
           {showPanel && <QuickViewPanel />}

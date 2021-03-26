@@ -12,7 +12,7 @@ export const NotFoundPage = () => {
           </div>
           <Link to="/">
             <button className="btn not-found_content__button" type="button">
-              GO BACK
+              GO HOME
             </button>
           </Link>
         </div>
