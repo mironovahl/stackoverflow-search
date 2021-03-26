@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useQuery } from 'src/utils';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TReducer } from 'src/types';
+import { useQuery } from 'src/utils';
+import { TState } from 'src/types';
 import { QuickViewPanel } from 'src/search-result/quick-view-panel';
 import { searchRequest } from 'src/store/search';
 import { Spinner } from 'src/ui/spinner';
@@ -23,10 +23,22 @@ export const SearchResultPage = () => {
   }, [searchQuery]);
 
   const searchResult = useSelector(
-    (state: TReducer) => state.search.searchResult,
+    (state: TState) => state.search.searchResult,
   );
-  const loading = useSelector((state: TReducer) => state.search.loading);
-  const error = useSelector((state: TReducer) => state.search.error);
+  const loading = useSelector((state: TState) => state.search.loading);
+  const error = useSelector((state: TState) => state.search.error);
+
+  const viewPanelDataLoading = useSelector(
+    (state: TState) => state.viewPanelData.loading,
+  );
+
+  useEffect(() => {
+    const quickViewPanel = document.querySelector('.quick-view-panel');
+
+    if (quickViewPanel) {
+      quickViewPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [viewPanelDataLoading]);
 
   if (loading) {
     return <Spinner />;

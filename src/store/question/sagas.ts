@@ -1,7 +1,7 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
 import { getQuestionInfo } from 'src/api';
-import { TOwner, TQuestionInfo, TQuestionInfoResponse } from 'src/types';
-import { convertCamelCase } from 'src/utils/convert-camel-case';
+import { TQuestionInfoResponse } from 'src/types';
+import { convertToCamelCase } from 'src/utils/convert-camel-case';
 import { QuestionRequestAction } from './actions';
 import {
   QUESTION_INFO_REQUEST,
@@ -21,8 +21,8 @@ function* sagaGetQuestionInfo(action: QuestionRequestAction) {
       action.payload,
     );
 
-    const questionInfo = convertCamelCase(response.items[0]) as TQuestionInfo;
-    questionInfo.owner = convertCamelCase(questionInfo.owner) as TOwner;
+    const questionInfo = convertToCamelCase(response.items[0]);
+
     yield put({ type: QUESTION_INFO_LOADED, payload: questionInfo });
   } catch (e) {
     yield put({ type: QUESTION_ERROR, payload: e });

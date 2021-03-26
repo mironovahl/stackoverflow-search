@@ -1,14 +1,8 @@
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
-import {
-  TOwner,
-  TReducer,
-  TSearchBy,
-  TSearchItem,
-  TSearchResponse,
-} from 'src/types';
+import { TState, TSearchBy, TSearchResponse } from 'src/types';
 import { sort } from 'src/utils';
-import { convertCamelCase } from 'src/utils/convert-camel-case';
+import { convertToCamelCase } from 'src/utils/convert-camel-case';
 import {
   ViewPanelDataRequestAction,
   ViewPanelDataSortingAction,
@@ -27,7 +21,7 @@ export const fetchViewPanelData = async (
 ) => {
   let data;
   if (searchByType === 'tag') {
-    data = await getQuestionsByTag(searchByValue as string);
+    data = await getQuestionsByTag(String(searchByValue));
   }
 
   if (searchByType === 'author') {
@@ -44,11 +38,7 @@ function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
       action.payload.searchByType,
       action.payload.searchByValue,
     );
-    const viewPanelData = response.items.map(item => {
-      const transformItem = convertCamelCase(item) as TSearchItem;
-      transformItem.owner = convertCamelCase(transformItem.owner) as TOwner;
-      return transformItem;
-    });
+    const viewPanelData = response.items.map(convertToCamelCase);
     yield put({ type: QUICK_VIEW_PANEL_DATA_LOADED, payload: viewPanelData });
   } catch (e) {
     yield put({ type: VIEW_PANEL_DATA_ERROR, payload: e });
@@ -57,7 +47,7 @@ function* sagaGetViewPanelData(action: ViewPanelDataRequestAction) {
 
 function* sagaSorting(action: ViewPanelDataSortingAction) {
   try {
-    const state: TReducer = yield select();
+    const state: TState = yield select();
     const viewPanelData = Array.from(state.viewPanelData.viewPanelData);
     const sortingResult = viewPanelData.sort(sort(action.payload));
     yield put({

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import t from 'src/image/stackoverflow.png';
+import logo from 'src/image/stackoverflow.png';
 
 export const SearchPage = () => {
   const history = useHistory();
@@ -18,7 +18,7 @@ export const SearchPage = () => {
   return (
     <div className="search">
       <div className="wrapper">
-        <img className="search_logo" src={t} alt="" />
+        <img className="search_logo" src={logo} alt="" />
         <form className="search_form">
           <input
             className="search_form__input"

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { questionRequest } from 'src/store/question';
-import { TReducer } from 'src/types';
+import { TState } from 'src/types';
 import { Answers } from 'src/question/answers';
 import { Question } from 'src/question/question';
 import { Spinner } from 'src/ui/spinner';
@@ -20,8 +20,8 @@ export const QuestionPage = () => {
     dispatch(questionRequest(id));
   }, [id]);
 
-  const loading = useSelector((state: TReducer) => state.question.loading);
-  const error = useSelector((state: TReducer) => state.question.error);
+  const loading = useSelector((state: TState) => state.question.loading);
+  const error = useSelector((state: TState) => state.question.error);
 
   if (loading) {
     return <Spinner />;

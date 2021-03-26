@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { TReducer } from 'src/types';
+import { TState } from 'src/types';
 
 export const Answers = () => {
   const questionInfo = useSelector(
-    (state: TReducer) => state.question.questionInfo,
+    (state: TState) => state.question.questionInfo,
   );
 
   const hasAnswers = questionInfo.answerCount > 0;

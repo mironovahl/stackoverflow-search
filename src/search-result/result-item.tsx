@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { viewPanelDataRequest } from 'src/store/view-panel-data';
-
-import { TReducer, TSearchBy, TSearchItem } from 'src/types';
+import { TSearchBy, TSearchItem } from 'src/types';
 import { Author } from 'src/ui/author';
 import { Tags } from 'src/ui/tags';
 
@@ -21,16 +20,6 @@ export const ResultItem = ({ searchData, setShowPanel }: IRowTable) => {
       setShowPanel(true);
     }
   };
-
-  const loading = useSelector((state: TReducer) => state.viewPanelData.loading);
-
-  useEffect(() => {
-    const quickViewPanel = document.querySelector('.quick-view-panel');
-
-    if (quickViewPanel) {
-      quickViewPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }, [loading]);
 
   const handleClickAuthor = (userId: number) => {
     openQuickViewPanel('author', userId);

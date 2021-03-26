@@ -1,13 +1,13 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { TReducer } from 'src/types';
+import { TState } from 'src/types';
 import { Author } from 'src/ui/author';
 import { Tags } from 'src/ui/tags';
 
 export const Question = () => {
   const questionInfo = useSelector(
-    (state: TReducer) => state.question.questionInfo,
+    (state: TState) => state.question.questionInfo,
   );
 
   return (

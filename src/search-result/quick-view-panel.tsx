@@ -1,23 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { TReducer } from 'src/types';
+import { TState } from 'src/types';
 import { Spinner } from 'src/ui/spinner';
 
 import { ResultList } from './result-list';
 
 export const QuickViewPanel = () => {
-  const loading = useSelector((state: TReducer) => state.viewPanelData.loading);
-  const error = useSelector((state: TReducer) => state.viewPanelData.error);
+  const loading = useSelector((state: TState) => state.viewPanelData.loading);
+  const error = useSelector((state: TState) => state.viewPanelData.error);
 
   const viewPanelData = useSelector(
-    (state: TReducer) => state.viewPanelData.viewPanelData,
+    (state: TState) => state.viewPanelData.viewPanelData,
   );
   const value = useSelector(
-    (state: TReducer) => state.viewPanelData.searchByValue,
+    (state: TState) => state.viewPanelData.searchByValue,
   );
   const type = useSelector(
-    (state: TReducer) => state.viewPanelData.searchByType,
+    (state: TState) => state.viewPanelData.searchByType,
   );
 
   const hasResult = viewPanelData.length !== 0;

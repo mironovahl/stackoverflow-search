@@ -25,7 +25,7 @@ export type TViewPanelData = {
   error: null | string;
 };
 
-export type TReducer = {
+export type TState = {
   search: TSearch;
 
   question: TQuestion;
