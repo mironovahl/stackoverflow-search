@@ -16,9 +16,7 @@ export const QuickViewPanel = () => {
   const value = useSelector(
     (state: TState) => state.viewPanelData.searchByValue,
   );
-  const type = useSelector(
-    (state: TState) => state.viewPanelData.searchByType,
-  );
+  const type = useSelector((state: TState) => state.viewPanelData.searchByType);
 
   const hasResult = viewPanelData.length !== 0;
 
