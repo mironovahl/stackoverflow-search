@@ -1,7 +1,9 @@
 import { put, call, takeLatest } from 'redux-saga/effects';
+
 import { getQuestionInfo } from 'src/api';
 import { TQuestionInfoResponse } from 'src/types';
-import { convertToCamelCase } from 'src/utils/convert-camel-case';
+import { convertToCamelCase } from 'src/utils';
+
 import { QuestionRequestAction } from './actions';
 import {
   QUESTION_INFO_REQUEST,

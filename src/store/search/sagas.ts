@@ -1,8 +1,9 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
+
 import { getQuestionsBySearchQuery } from 'src/api';
 import { TState, TSearchResponse } from 'src/types';
-import { sort } from 'src/utils';
-import { convertToCamelCase } from 'src/utils/convert-camel-case';
+import { sort, convertToCamelCase } from 'src/utils';
+
 import { SearchRequestAction, SearchSortingAction } from './actions';
 import {
   SEARCH_REQUEST,

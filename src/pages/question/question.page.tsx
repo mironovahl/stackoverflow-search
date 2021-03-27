@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 
 import { questionRequest } from 'src/store/question';
 import { TState } from 'src/types';
-import { Answers } from 'src/question/answers';
-import { Question } from 'src/question/question';
+import { Answers } from 'src/pages/question/answers';
+import { Question } from 'src/pages/question/question';
 import { Spinner } from 'src/ui/spinner';
 
 interface IParams {

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { useQuery } from 'src/utils';
 import { TState } from 'src/types';
-import { QuickViewPanel } from 'src/search-result/quick-view-panel';
+import { QuickViewPanel } from 'src/pages/search-result/quick-view-panel';
 import { searchRequest } from 'src/store/search';
 import { Spinner } from 'src/ui/spinner';
-import { ResultList } from 'src/search-result/result-list';
+import { ResultList } from 'src/pages/search-result/result-list';
 
 import { SortButtons } from './sort-buttons';
 

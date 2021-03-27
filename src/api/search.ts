@@ -1,4 +1,4 @@
-import { apiRequest } from 'src/utils/api-request';
+import { apiRequest } from 'src/utils';
 
 import { URL_API } from './constants';
 

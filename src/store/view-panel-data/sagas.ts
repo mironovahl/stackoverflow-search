@@ -1,8 +1,9 @@
 import { put, call, takeEvery, select } from 'redux-saga/effects';
+
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
 import { TState, TSearchBy, TSearchResponse } from 'src/types';
-import { sort } from 'src/utils';
-import { convertToCamelCase } from 'src/utils/convert-camel-case';
+import { sort, convertToCamelCase } from 'src/utils';
+
 import {
   ViewPanelDataRequestAction,
   ViewPanelDataSortingAction,
