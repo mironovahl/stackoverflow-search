@@ -17,7 +17,7 @@
     @include box-shadow(4px 4px 5px $color-shadow, -4px -4px 5px $color-white);
   } 
 
-  &:active {
+  &.active, &:active {
     @include box-shadow( inset 3px 3px 3px $color-shadow, inset -3px -3px 3px $color-white);
   }
 }

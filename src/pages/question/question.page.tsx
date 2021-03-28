@@ -20,14 +20,13 @@ export const QuestionPage = () => {
     dispatch(questionRequest(id));
   }, [id]);
 
-  const loading = useSelector((state: TState) => state.question.loading);
-  const error = useSelector((state: TState) => state.question.error);
+  const question = useSelector((state: TState) => state.question);
 
-  if (loading) {
+  if (question.loading) {
     return <Spinner />;
   }
 
-  if (error) {
+  if (question.error) {
     return <p>Something went wrong...</p>;
   }
 

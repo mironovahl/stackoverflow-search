@@ -98,3 +98,15 @@ export type TQuestionInfoResponse = {
   quotaMax: number;
   quotaRemaining: number;
 };
+
+export enum sortByEnum {
+  sortByTitle = 'Title',
+  sortByAuthor = 'Author',
+  sortByAnswers = 'Answers',
+  sortByTags = 'Tags',
+}
+
+export type sortByItem = {
+  label: string;
+  value: TSortBy;
+};

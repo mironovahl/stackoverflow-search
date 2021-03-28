@@ -22,11 +22,7 @@ export const SearchResultPage = () => {
     dispatch(searchRequest(searchQuery));
   }, [searchQuery]);
 
-  const searchResult = useSelector(
-    (state: TState) => state.search.searchResult,
-  );
-  const loading = useSelector((state: TState) => state.search.loading);
-  const error = useSelector((state: TState) => state.search.error);
+  const search = useSelector((state: TState) => state.search);
 
   const viewPanelDataLoading = useSelector(
     (state: TState) => state.viewPanelData.loading,
@@ -40,11 +36,11 @@ export const SearchResultPage = () => {
     }
   }, [viewPanelDataLoading]);
 
-  if (loading) {
+  if (search.loading) {
     return <Spinner />;
   }
 
-  if (error) {
+  if (search.error) {
     return <p>Something went wrong...</p>;
   }
 
@@ -59,7 +55,7 @@ export const SearchResultPage = () => {
             </p>
 
             <ResultList
-              searchResult={searchResult}
+              searchResult={search.searchResult}
               setShowPanel={setShowPanel}
             />
           </div>

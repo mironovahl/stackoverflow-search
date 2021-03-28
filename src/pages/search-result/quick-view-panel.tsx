@@ -7,16 +7,15 @@ import { Spinner } from 'src/ui/spinner';
 import { ResultList } from './result-list';
 
 export const QuickViewPanel = () => {
-  const loading = useSelector((state: TState) => state.viewPanelData.loading);
-  const error = useSelector((state: TState) => state.viewPanelData.error);
+  const viewPanel = useSelector((state: TState) => state.viewPanelData);
 
-  const viewPanelData = useSelector(
-    (state: TState) => state.viewPanelData.viewPanelData,
-  );
-  const value = useSelector(
-    (state: TState) => state.viewPanelData.searchByValue,
-  );
-  const type = useSelector((state: TState) => state.viewPanelData.searchByType);
+  const {
+    error,
+    loading,
+    searchByValue,
+    searchByType,
+    viewPanelData,
+  } = viewPanel;
 
   const hasResult = viewPanelData.length !== 0;
 
@@ -32,12 +31,12 @@ export const QuickViewPanel = () => {
     return <p>Result not found</p>;
   }
 
-  const typeQuestions = type === 'tag' ? 'tagged' : 'the users id';
+  const typeQuestions = searchByType === 'tag' ? 'tagged' : 'the users id';
 
   return (
     <div className="quick-view-panel">
       <p className="result_title">
-        Questions {typeQuestions} <strong>{value}</strong>
+        Questions {typeQuestions} <strong>{searchByValue}</strong>
       </p>
 
       <ResultList searchResult={viewPanelData} />
