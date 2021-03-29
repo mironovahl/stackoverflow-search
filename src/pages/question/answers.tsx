@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { TState } from 'src/types';
@@ -18,6 +17,10 @@ export const Answers = () => {
         questionInfo.answers.map(item => (
           <div className="answers_item" key={item.answerId}>
             <span className="answers_item__score">{item.score}</span>
+            {/* It's not safe, although StackOverflow API sends HTML.
+             There are a few sanitize libraries,
+             but we cannot use them according to technical requirements  */}
+            {/* eslint-disable-next-line react/no-danger */}
             <div dangerouslySetInnerHTML={{ __html: item.body }} />
           </div>
         ))}

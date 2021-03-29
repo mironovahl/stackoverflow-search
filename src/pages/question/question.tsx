@@ -15,6 +15,10 @@ export const Question = () => {
       <h2 className="question_content__title">{questionInfo.title}</h2>
       <p
         className="question_content__body"
+        /* It's not safe, although StackOverflow API sends HTML.
+           There are a few sanitize libraries,
+           but we cannot use them according to technical requirements  */
+
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: questionInfo.body }}
       />

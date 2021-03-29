@@ -2,7 +2,7 @@ import { put, call, takeEvery, select } from 'redux-saga/effects';
 
 import { getQuestionsByTag, getQuestionsByUser } from 'src/api';
 import { TState, TSearchBy, TSearchResponse } from 'src/types';
-import { sort, convertToCamelCase } from 'src/utils';
+import { getSortByType, convertToCamelCase } from 'src/utils';
 
 import {
   ViewPanelDataRequestAction,
@@ -50,7 +50,8 @@ function* sagaSorting(action: ViewPanelDataSortingAction) {
   try {
     const state: TState = yield select();
     const viewPanelData = Array.from(state.viewPanelData.viewPanelData);
-    const sortingResult = viewPanelData.sort(sort(action.payload));
+    const sortingResult = viewPanelData.sort(getSortByType(action.payload));
+
     yield put({
       type: QUICK_VIEW_PANEL_DATA_SORTED,
       payload: sortingResult,

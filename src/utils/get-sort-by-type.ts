@@ -1,6 +1,6 @@
 import { TSearchItem, TSortBy } from 'src/types';
 
-export const sort = (param: TSortBy) => (
+export const getSortByType = (param: TSortBy) => (
   a: TSearchItem,
   b: TSearchItem,
 ): number => {

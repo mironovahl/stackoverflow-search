@@ -2,7 +2,7 @@ import { takeEvery, put, call, select } from 'redux-saga/effects';
 
 import { getQuestionsBySearchQuery } from 'src/api';
 import { TState, TSearchResponse } from 'src/types';
-import { sort, convertToCamelCase } from 'src/utils';
+import { getSortByType, convertToCamelCase } from 'src/utils';
 
 import { SearchRequestAction, SearchSortingAction } from './actions';
 import {
@@ -36,7 +36,10 @@ function* sagaSorting(action: SearchSortingAction) {
   try {
     const state: TState = yield select();
     const searchResult = Array.from(state.search.searchResult);
-    const sortingSearchResult = searchResult.sort(sort(action.payload));
+
+    const sortingSearchResult = searchResult.sort(
+      getSortByType(action.payload),
+    );
     yield put({ type: SEARCH_RESULT_SORTED, payload: sortingSearchResult });
   } catch (e) {
     yield put({ type: SEARCH_ERROR, payload: e });
