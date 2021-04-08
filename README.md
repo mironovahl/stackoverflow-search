@@ -3,6 +3,11 @@
 stackoverflow_search
 </h1>
 
+## Технические требования
+1. Для получения данных использовать вызовы к api прямо из браузера http://api.stackexchange.com/docs
+2. Переходы между экранами должны оставаться в истории браузера и должны работать браузерные переходы "вперед" и "назад"
+3. Обязательный стэк технологий: create-react-app, react, redux, redux-saga, react-router, typescript, eslint (airbnb-config).
+По желанию можно использовать Lodash, Ramda. Использование других библиотек запрещено.
 # Demo
 
 https://stackoverflow-search.vercel.app/
@@ -15,7 +20,7 @@ https://stackoverflow-search.vercel.app/
 git clone git@github.com:mironovahl/stackoverflow-search.git
 ```
 
-#### or
+or
 
 ```bash
 https://github.com/mironovahl/stackoverflow-search.git
